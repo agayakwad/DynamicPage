@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <title>Angular Dynamic Page Test</title>
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../Css/jquery.datetimepicker.css"/>
+	<style>
+		.nav,
+		.pagination,
+		.carousel a {
+			cursor: pointer;
+		}
+		
+		.fixed {
+			position: fixed;
+			margin: 0;
+		}
+		
+		div.fixed {
+			overflow-y: auto;
+			height: 100%;
+			margin-left: -15px;
+		}
+		
+		pre {
+			margin: 1ex 0;
+		}
+		
+        form,
+        ng-form {
+            border: 1px solid blue;
+            border-radius: 4px;
+            display: block;
+        }
+        
+		legend {
+			font-weight: bold;
+		}
+		
+		label,
+		span,
+		form > button,
+		ng-form > button,
+		form > input,
+		ng-form > input {
+			width: 48%;
+			padding: 1ex 1em;
+		}
+		
+		label > input,
+		label > select,
+		label > textarea {
+			float: right;
+            width: 60%;
+		}
+		
+		label div > label {
+			display: block;
+			padding: 1ex;
+            width: 100%;
+		}
+	</style>
+  </head>
+  <body ng-controller="AppCtrl" ng-cloak="">     
+	 <div style="display:inline-block; min-height:200px; width:300px;">
+      <div class="well well-sm" ng-model="dt">
+          <datepicker min="minDate" show-weeks="false"></datepicker>
+      </div>
+    </div>
+    <div>
+      <input type="text" datepicker-popup="dd/MM/yyyy" ng-model="dt" />     
+    </div> 
+
+    <div>
+    	  New Jquery DtPicker without Directive <input id="datetimepicker" type="text" >
+    </div>	
+
+	<dynamic-Page class="col-md-8" template="stdPageTemplate" ng-model="stdPageData">
+		<legend>Dynamic Page testing </legend>
+	</dynamic-Page>
+
+	<div class="col-md-4">
+		<div class="fixed col-md-4">
+			<pre>stdPageData: {{stdPageData | pretty}}</pre>
+			 
+		</div>
+	</div>
+
+	
+  	<!-- Load scripts at the end for performance. -->
+
+   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 	
+   <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script> 
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+	
+   
+   <script src="../js/jquery.datetimepicker.js"></script>
+
+	<script src="../dynamic-page.js"></script>
+    
+	<script src="app.js"></script>
+	<script src="../js/ui-bootstrap.js"></script>
+	<script src="../js/bootstrap.js"></script>
+	<style type="text/css" src="../Css/bootstrap.css"></style>
+	<style type="text/css" src="../Css/bootstrap-theme.css"></style>
+	
+	
+	<script type="text/javascript">
+
+		//$('#datetimepicker').datetimepicker();
+		$('#datetimepicker').datetimepicker({
+		  datepicker:false,
+		  format:'H:i'
+		});
+	</script>
+  </body>
+</html>
